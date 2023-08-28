@@ -20,7 +20,7 @@ nmap <leader>n :NERDTree<CR>
 nmap <leader>? :NERDTreeFind<CR>
 " navigation "
 nmap gr <Action>(FindUsages)
-nnoremap <leader>h <Action>(CallHierarchy)
+nmap gh <Action>(CallHierarchy)
 nmap gl <Action>(ShowErrorDescription)
 map [[ <Action>(MethodUp)
 map ]] <Action>(MethodDown)
@@ -29,9 +29,11 @@ nmap <leader>fF <Action>(GoToMenu)
 nmap <leader>ff <Action>(GotoFile)
 nmap <leader>ft <Action>(GotoTest)
 nmap <leader>fc <Action>(GotoClass)
-nmap <leader>fi <Action>(FileStructurePopup)
+nmap <leader>fs <Action>(FileStructurePopup)
 nmap <leader>fq <Action>(QuickFixes)
-nmap <leader>fp <Action>(NextProjectWindow)
+nmap <leader>fp <Action>(ManageRecentProjects)
+nmap <leader>fa <Action>(ShowIntentionActions)
+nmap <leader><leader> <Action>(Switcher)
 " editing "
 nmap <F2> <Action>(RenameElement)
 nnoremap <C-j> :m +1<CR>
