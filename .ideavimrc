@@ -22,8 +22,12 @@ nmap <leader>? :NERDTreeFind<CR>
 nmap gr <Action>(FindUsages)
 nmap gh <Action>(CallHierarchy)
 nmap gl <Action>(ShowErrorDescription)
+
+nmap <leader>t <Actin>(ActivateTerminalToolWindow)
+
 map [[ <Action>(MethodUp)
 map ]] <Action>(MethodDown)
+
 " search "
 nmap <leader>fF <Action>(GoToMenu)
 nmap <leader>ff <Action>(GotoFile)
