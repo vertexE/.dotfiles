@@ -21,12 +21,14 @@ nmap <leader>? :NERDTreeFind<CR>
 " navigation "
 nmap gr <Action>(FindUsages)
 nmap gh <Action>(CallHierarchy)
-nmap gl <Action>(ShowErrorDescription)
+nmap <leader>e <Action>(ShowErrorDescription)
 
-nmap <leader>t <Actin>(ActivateTerminalToolWindow)
+nmap <leader>t <Action>(ActivateTerminalToolWindow)
 
 map [[ <Action>(MethodUp)
 map ]] <Action>(MethodDown)
+" cargo "
+nmap <leader>cr <Action>(Cargo.RefreshCargoProject)
 
 " search "
 nmap <leader>fF <Action>(GoToMenu)
@@ -37,20 +39,21 @@ nmap <leader>fs <Action>(FileStructurePopup)
 nmap <leader>fq <Action>(QuickFixes)
 nmap <leader>fp <Action>(ManageRecentProjects)
 nmap <leader>fa <Action>(ShowIntentionActions)
+nmap <leader>fA <Action>(GotoAction)
 nmap <leader><leader> <Action>(Switcher)
 " editing "
-nmap <F2> <Action>(RenameElement)
+nmap <leader>rn <Action>(RenameElement)
 nnoremap <C-j> :m +1<CR>
 nnoremap <C-k> :m -2<CR>
 vnoremap < <gv
 vnoremap > >gv
-nmap <leader>gc <Action>(CommentByLineComment)
-nmap <leader>gC <Action>(CommentByBlockComment)
+nmap gc <Action>(CommentByLineComment)
+nmap gC <Action>(CommentByBlockComment)
 nmap <leader>p <Action>(ReformatCode)
 nmap <leader>pp <Action>(OptimizeImports)
 " git "
 nmap <leader>gc <Action>(Git.Branches)
-nmap <leader>ga <Action>(Git.Menu)
+nmap <leader>go <Action>(Git.Menu)
 nmap <leader>gl <Action>(Git.Log)
 nmap <leader>gs <Action>(Git.MainMenu.LocalChanges)
 " settings control "
