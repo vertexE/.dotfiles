@@ -1,4 +1,4 @@
-" Pugins "
+  " Pugins "
 set NERDTree
 set surround
 set ideamarks
@@ -36,6 +36,7 @@ nmap <leader>ff <Action>(GotoFile)
 nmap <leader>ft <Action>(GotoTest)
 nmap <leader>fc <Action>(GotoClass)
 nmap <leader>fs <Action>(FileStructurePopup)
+nmap <leader>fg <Action>(SearchEverywhere)
 nmap <leader>fq <Action>(QuickFixes)
 nmap <leader>fp <Action>(ManageRecentProjects)
 nmap <leader>fa <Action>(ShowIntentionActions)
