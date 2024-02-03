@@ -1,4 +1,4 @@
-  " Pugins "
+" Pugins "
 set NERDTree
 set surround
 set ideamarks
@@ -21,6 +21,7 @@ nmap <leader>? :NERDTreeFind<CR>
 " navigation "
 nmap gr <Action>(FindUsages)
 nmap gh <Action>(CallHierarchy)
+nmap ge <Action>(GotoNextError)
 nmap <leader>e <Action>(ShowErrorDescription)
 
 nmap <leader>t <Action>(ActivateTerminalToolWindow)
@@ -36,12 +37,13 @@ nmap <leader>ff <Action>(GotoFile)
 nmap <leader>ft <Action>(GotoTest)
 nmap <leader>fc <Action>(GotoClass)
 nmap <leader>fs <Action>(FileStructurePopup)
+nmap <leader>fS <Action>(GotoSymbol)
 nmap <leader>fg <Action>(SearchEverywhere)
 nmap <leader>fe <Action>(ActivateProblemsViewToolWindow)
 nmap <leader>fq <Action>(QuickFixes)
 nmap <leader>fp <Action>(ManageRecentProjects)
 nmap <leader>fa <Action>(ShowIntentionActions)
-nmap <leader>fA <Action>(GotoAction)
+nmap <leader>a <Action>(GotoAction)
 nmap <leader><leader> <Action>(Switcher)
 " editing "
 nmap <leader>rn <Action>(RenameElement)
@@ -49,8 +51,8 @@ nnoremap <C-j> :m +1<CR>
 nnoremap <C-k> :m -2<CR>
 vnoremap < <gv
 vnoremap > >gv
-nmap gc <Action>(CommentByLineComment)
-nmap gC <Action>(CommentByBlockComment)
+vmap gc <Action>(CommentByLineComment)
+vmap gC <Action>(CommentByBlockComment)
 nmap <leader>p <Action>(ReformatCode)
 nmap <leader>pp <Action>(OptimizeImports)
 " git "
