@@ -1,0 +1,136 @@
+[
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-/": "terminal_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-/": "workspace::ToggleBottomDock",
+      "ctrl-u": ["workspace::SendKeystrokes", "1 5 k z z"],
+      "ctrl-d": ["workspace::SendKeystrokes", "1 5 j z z"]
+    }
+  },
+  {
+    "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
+    "bindings": {
+      // put key-bindings here if you want them to work in normal & visual mode
+      "space g r": "editor::RevertSelectedHunks",
+      "L": "vim::EndOfLine",
+      "H": "vim::StartOfLineDownward"
+    }
+  },
+  {
+    "context": "OutlinePanel",
+    "bindings": {
+      "z c": "outline_panel::CollapseSelectedEntry",
+      "z o": "outline_panel::ExpandSelectedEntry",
+      "escape": "outline_panel::ToggleFocus",
+      "enter": [
+        "workspace::SendKeystrokes",
+        "ctrl-shift-cmd o ctrl-shift-cmd-t"
+      ],
+      // due weird mappings that won't be accidentally hit
+      "ctrl-shift-cmd o": "outline_panel::Open",
+      "ctrl-shift-cmd-t": "outline_panel::ToggleFocus",
+      "ctrl-n": "menu::SelectNext",
+      "ctrl-p": "menu::SelectPrev"
+      // "enter": "outline_panel::Open"
+      // I don't get copy path???
+      // "cmd-alt-c": "outline_panel::CopyPath",
+      // "alt-cmd-shift-c": "outline_panel::CopyRelativePath",
+      // "alt-cmd-r": "outline_panel::RevealInFileManager",
+      // "space": "outline_panel::Open",
+      // "shift-down": "menu::SelectNext",
+      // "shift-up": "menu::SelectPrev"
+    }
+  },
+  {
+    "context": "ProjectPanel",
+    "bindings": {
+      "space a": "project_panel::NewFile",
+      "space r": "project_panel::Rename",
+      "space m": "project_panel::NewDirectory",
+      "space d": "project_panel::Delete",
+      "space Y": "project_panel::CopyPath",
+      "space y": "project_panel::Copy",
+      "space p": "project_panel::Paste",
+      "escape": "project_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "EmptyPane || SharedScreen || vim_operator == none && !VimWaiting && vim_mode != insert",
+    "bindings": {
+      "space g g": ["task::Spawn", { "task_name": "lazygit" }],
+      "space ?": ["task::Spawn", { "task_name": "mark" }],
+      "space t l": ["task::Spawn", { "task_name": "task" }],
+      "space f b": "tab_switcher::Toggle",
+      "space f f": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
+    "bindings": {
+      "space space": "editor::Format",
+      "space c c": "theme_selector::Toggle",
+      "space w": "workspace::Save",
+      "space q": "pane::CloseActiveItem",
+      "space g d": "editor::ToggleHunkDiff",
+      "g s": "branches::OpenRecent",
+      "space f i": "buffer_search::Deploy",
+      "space f g": "workspace::NewSearch",
+      "space z z": "workspace::ToggleCenteredLayout",
+      "space f s": "outline::Toggle",
+      // "space f shift-s": "project_symbols::Toggle",
+      "space shift-n": "project_panel::ToggleFocus",
+      "space f o": "outline_panel::ToggleFocus",
+      // "[ b": "pane::GoBack",
+      // "] b": "pane::GoForward",
+      "space g b": "editor::ToggleGitBlameInline",
+      "space f e": "diagnostics::Deploy",
+      "space e": "editor::GoToDiagnostic",
+      // "[ d": "editor::GoToPrevDiagnostic",
+      "] c": "editor::GoToHunk",
+      "[ c": "editor::GoToPrevHunk",
+      "g I": "editor::GoToImplementation",
+      "g d": "editor::GoToDefinition",
+      "enter": "editor::OpenExcerpts",
+      "space r n": "editor::Rename",
+      "g r": "editor::FindAllReferences",
+      "space a": "editor::ToggleCodeActions"
+    }
+  },
+  {
+    "context": "Editor && showing_completions",
+    "bindings": {
+      "ctrl-y": "editor::ConfirmCompletion"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == visual && !VimWaiting && !menu",
+    "bindings": {
+      // visual, visual line & visual block modes
+      "shift-j": "editor::MoveLineDown",
+      "shift-k": "editor::MoveLineUp"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert && !menu",
+    "bindings": {
+      // put key-bindings here if you want them to work in insert mode
+      // e.g.
+      // "j j": "vim::NormalBefore" // remap jj in insert mode to escape.
+    }
+  },
+  {
+    "context": "EmptyPane || SharedScreen",
+    "bindings": {
+      // put key-bindings here (in addition to above) if you want them to
+      // work when no editor exists
+      // e.g.
+      // "space f": "file_finder::Toggle"
+    }
+  }
+]

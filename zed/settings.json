@@ -1,0 +1,35 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run the `open default settings` command
+// from the command palette or from `Zed` application menu.
+{
+  "ui_font_size": 16,
+  "relative_line_numbers": true,
+  "buffer_font_size": 16,
+  "ui_font_family": "Maple Mono NF",
+  "buffer_font_family": "Maple Mono NF",
+  "auto_signature_help": true,
+  "inlay_hints": {
+    "enabled": true
+  },
+  "vim_mode": true,
+  "vim": {
+    "use_system_clipboard": "always",
+    "use_smartcase_find": true
+  },
+  "git": {
+    "git_gutter": "tracked_files",
+    "inline_blame": {
+      "enabled": true
+    }
+  },
+  "theme": {
+    "mode": "light",
+    "light": "Catppuccin Mocha - No Italics",
+    "dark": "Catppuccin Mocha"
+  }
+}
