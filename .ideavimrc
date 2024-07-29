@@ -10,60 +10,149 @@ set relativenumber
 
 let mapleader = " "
 
+" editor "
+nmap <leader>tl <Action>(ActivateTODOToolWindow)
+nmap <D-=> <Action>(EditorIncreaseFontSize)
+nmap <D--> <Action>(EditorDecreaseFontSize)
+" nmap <D-d> <Action>(Documentation.ToggleShowInPopup) this can be found in the action search
+nmap <D-s> <Action>(NewScratchFile)
+nmap <D-r> <Action>(Run)
+
 " reload "
 nmap <leader>R <Action>(IdeaVim.ReloadVimRc.reload)
+
 " tab control "
-nmap <leader>q <Action>(CloseContent)
-nmap <leader>Q <Action>(ReopenClosedTab)
+nmap <leader>q <Action>(HideActiveWindow)
+nmap <leader>Q <Action>( qReopenClosedTab)
+
 " nerd tree "
-nmap <leader>n :NERDTree<CR>
-nmap <leader>? :NERDTreeFind<CR>
-" navigation "
+nmap <leader>N :NERDTreeFind<CR>
+
+" code navigation "
 nmap gr <Action>(FindUsages)
-nmap gh <Action>(CallHierarchy)
-nmap ge <Action>(GotoNextError)
+nmap <leader>gc <Action>(GotoClass)
+nmap <leader>gt <Action>(GotoTest)
+nmap gh <Action>(ActivateHierarchyToolWindow)<Action>(CallHierarchy)
+
+" diagnostics
+nmap ]d <Action>(GotoNextError)
+nmap [d <Action>(GotoPreviousError)
+nmap [[ <Action>(MethodUp)
+nmap ]] <Action>(MethodDown)
 nmap <leader>e <Action>(ShowErrorDescription)
 
-nmap <leader>t <Action>(ActivateTerminalToolWindow)
+" bookmarks
+nmap <leader>mo <Action>(Bookmarks)
+nmap <leader>mt <Action>(ToggleBookmarkWithMnemonic)
+"nmap <leader>me <Action>(EditBookmark)
+nmap <leader>me <Action>(EditBookmarksGroup)
+"
+nmap <leader>mA <Action>(GotoBookmarkA)
+nmap <leader>mB <Action>(GotoBookmarkB)
+nmap <leader>mC <Action>(GotoBookmarkC)
+nmap <leader>mD <Action>(GotoBookmarkD)
+nmap <leader>mE <Action>(GotoBookmarkE)
+nmap <leader>mF <Action>(GotoBookmarkF)
+nmap <leader>mG <Action>(GotoBookmarkG)
+nmap <leader>mH <Action>(GotoBookmarkH)
+nmap <leader>mI <Action>(GotoBookmarkI)
+nmap <leader>mJ <Action>(GotoBookmarkJ)
+nmap <leader>mK <Action>(GotoBookmarkK)
+nmap <leader>mL <Action>(GotoBookmarkL)
+nmap <leader>mM <Action>(GotoBookmarkM)
+nmap <leader>mN <Action>(GotoBookmarkN)
+nmap <leader>mO <Action>(GotoBookmarkO)
+nmap <leader>mP <Action>(GotoBookmarkP)
+nmap <leader>mQ <Action>(GotoBookmarkQ)
+nmap <leader>mR <Action>(GotoBookmarkR)
+nmap <leader>mS <Action>(GotoBookmarkS)
+nmap <leader>mT <Action>(GotoBookmarkT)
+nmap <leader>mU <Action>(GotoBookmarkU)
+nmap <leader>mV <Action>(GotoBookmarkV)
+nmap <leader>mW <Action>(GotoBookmarkW)
+nmap <leader>mX <Action>(GotoBookmarkX)
+nmap <leader>mY <Action>(GotoBookmarkY)
+nmap <leader>mZ <Action>(GotoBookmarkZ)
 
-map [[ <Action>(MethodUp)
-map ]] <Action>(MethodDown)
-" cargo "
-nmap <leader>cr <Action>(Cargo.RefreshCargoProject)
+nmap ]s <Action>(GotoNextBookmark)
+nmap [s <Action>(GotoPreviousBookmark)
+nmap <C-f> <Action>(ShowBookmarks)
+
+" cargo -- enable only on rust rover
+" nmap <leader>cr <Action>(Cargo.RefreshCargoProject)
+
+" git "
+nmap <leader>gc <Action>(ActivateHierarchyToolWindow)
+nmap <leader>ga <Action>(Git.FileActions)
+nmap <leader>gd <Action>(Git.CompareWithBranch)
+nmap <leader>gb <Action>(Git.Branches)
+nmap <leader>go <Action>(Git.Menu)
+nmap <leader>gg <Action>(ActivateVersionControlToolWindow)
+nmap <leader>gn <Action>(Git.Clone)
+nmap <leader>gr <Action>(Vcs.RollbackChangedLines)
+
+" refactoring
+nmap <leader>rn <Action>(RenameElement)
+nmap <leader>rr <Action>(Refactorings.QuickListPopupAction)
+vmap <leader>rr <Action>(Refactorings.QuickListPopupAction)
+nmap <leader>rf <Action>(ReformatCode)<Action>(OptimizeImports)
+
+" debugging
+" Debugger.ShowReferring
+"nmap <leader>dn <Action>(DebugClass)
+nmap <leader>dw <Action>(Debugger.AddToWatch)
+nmap <leader>j <Action>(StepOver)
+nmap <leader>i <Action>(SmartStepInto)
+nmap <leader>rc <Action>(RunToCursor)
+nmap <leader>K <Action>(QuickEvaluateExpression)
+nmap <leader>de <Action>(EvaluateExpression)
+nmap <leader>n <Action>(Debug)
+nmap <leader>b <Action>(ToggleLineBreakpoint)
+
+" movement
+" ...
 
 " search "
 nmap <leader>fF <Action>(GoToMenu)
+nmap <leader>fi <Action>(Replace)
 nmap <leader>ff <Action>(GotoFile)
-nmap <leader>ft <Action>(GotoTest)
-nmap <leader>fc <Action>(GotoClass)
 nmap <leader>fs <Action>(FileStructurePopup)
 nmap <leader>fS <Action>(GotoSymbol)
-nmap <leader>fg <Action>(SearchEverywhere)
+"nmap <leader>fg <Action>(SearchEverywhere)
+nmap <leader>fg <Action>(TextSearchAction)
 nmap <leader>fe <Action>(ActivateProblemsViewToolWindow)
-nmap <leader>fq <Action>(QuickFixes)
+" nmap <leader>fq <Action>(QuickFixes)
 nmap <leader>fp <Action>(ManageRecentProjects)
 nmap <leader>fa <Action>(ShowIntentionActions)
+nmap <leader>S <Action>(ActivateStructureToolWindow)
 nmap <leader>a <Action>(GotoAction)
 nmap <leader><leader> <Action>(Switcher)
+
 " editing "
-nmap <leader>rn <Action>(RenameElement)
-nnoremap <C-j> :m +1<CR>
-nnoremap <C-k> :m -2<CR>
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+nnoremap L $
+nnoremap H ^
+xnoremap L $
+xnoremap H ^
+
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+
 vnoremap < <gv
 vnoremap > >gv
 vmap gc <Action>(CommentByLineComment)
 vmap gC <Action>(CommentByBlockComment)
-nmap <leader>p <Action>(ReformatCode)
-nmap <leader>pp <Action>(OptimizeImports)
-" git "
-nmap <leader>gc <Action>(Git.Branches)
-nmap <leader>go <Action>(Git.Menu)
-nmap <leader>gl <Action>(Git.Log)
+
+" nmap <leader>gl <Action>(Git.Log)
 nmap <leader>gs <Action>(Git.MainMenu.LocalChanges)
 " settings control "
 nmap <leader>cc <Action>(QuickChangeScheme)
-nmap <leader>zz <Action>(ToggleZenMode)
+nmap <leader>zz <Action>(ToggleDistractionFreeMode)
 " IDE controls "
-nmap <leader>r <Action>(Run)
-nmap <leader>d <Action>(Debug)
-nmap <leader>b <Action>(ToggleLineBreakpoint)
+
+" terminal
+" to leave without closing, S-esc
+nmap <c-/> <Action>(ActivateTerminalToolWindow)
