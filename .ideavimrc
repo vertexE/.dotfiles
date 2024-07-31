@@ -1,12 +1,14 @@
-" Pugins "
+" plugins
 set NERDTree
 set surround
 set ideamarks
+set vim-surround
 
 
 set clipboard+=unnamed
 set nu
 set relativenumber
+set ignorecase smartcase
 
 let mapleader = " "
 
@@ -29,10 +31,14 @@ nmap <leader>Q <Action>( qReopenClosedTab)
 nmap <leader>N :NERDTreeFind<CR>
 
 " code navigation "
-nmap gr <Action>(FindUsages)
-nmap <leader>gc <Action>(GotoClass)
+nmap gr <Action>(ShowUsages)
+nmap gR <Action>(FindUsages)
+" nmap <leader>gc <Action>(GotoClass)
+nmap ]c <Action>(VcsShowNextChangeMarker)
+nmap [c <Action>(VcsShowPrevChangeMarker)
 nmap <leader>gt <Action>(GotoTest)
 nmap gh <Action>(ActivateHierarchyToolWindow)<Action>(CallHierarchy)
+nmap gt <Action>(ActivateHierarchyToolWindow)<Action>(TypeHierarchy)
 
 " diagnostics
 nmap ]d <Action>(GotoNextError)
@@ -82,7 +88,7 @@ nmap <C-f> <Action>(ShowBookmarks)
 " nmap <leader>cr <Action>(Cargo.RefreshCargoProject)
 
 " git "
-nmap <leader>gc <Action>(ActivateHierarchyToolWindow)
+nmap <leader>gc <Action>(ActivateCommitToolWindow)
 nmap <leader>ga <Action>(Git.FileActions)
 nmap <leader>gd <Action>(Git.CompareWithBranch)
 nmap <leader>gb <Action>(Git.Branches)
@@ -100,6 +106,8 @@ nmap <leader>rf <Action>(ReformatCode)<Action>(OptimizeImports)
 " debugging
 " Debugger.ShowReferring
 "nmap <leader>dn <Action>(DebugClass)
+nmap <leader>do <Action>(ActivateDebugToolWindow)
+nmap <leader>q <Action>(Stop)
 nmap <leader>dw <Action>(Debugger.AddToWatch)
 nmap <leader>j <Action>(StepOver)
 nmap <leader>i <Action>(SmartStepInto)
@@ -124,7 +132,7 @@ nmap <leader>fe <Action>(ActivateProblemsViewToolWindow)
 " nmap <leader>fq <Action>(QuickFixes)
 nmap <leader>fp <Action>(ManageRecentProjects)
 nmap <leader>fa <Action>(ShowIntentionActions)
-nmap <leader>S <Action>(ActivateStructureToolWindow)
+nmap <leader>fo <Action>(ActivateStructureToolWindow)
 nmap <leader>a <Action>(GotoAction)
 nmap <leader><leader> <Action>(Switcher)
 
@@ -155,4 +163,6 @@ nmap <leader>zz <Action>(ToggleDistractionFreeMode)
 
 " terminal
 " to leave without closing, S-esc
-nmap <c-/> <Action>(ActivateTerminalToolWindow)
+nmap <leader>to <Action>(ActivateTerminalToolWindow)
+" only for pycharm
+nmap <leader>tr <Action>(ActivatePythonConsoleToolWindow)
