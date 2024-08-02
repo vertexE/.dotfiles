@@ -4,21 +4,17 @@ set surround
 set ideamarks
 set vim-surround
 
-
+" options
 set clipboard+=unnamed
 set nu
 set relativenumber
 set ignorecase smartcase
 
+" leader
 let mapleader = " "
 
-" editor "
-nmap <leader>tl <Action>(ActivateTODOToolWindow)
-nmap <D-=> <Action>(EditorIncreaseFontSize)
-nmap <D--> <Action>(EditorDecreaseFontSize)
-" nmap <D-d> <Action>(Documentation.ToggleShowInPopup) this can be found in the action search
-nmap <D-s> <Action>(NewScratchFile)
-nmap <D-r> <Action>(Run)
+" assistants
+nmap <leader>go <Action>(copilot.chat.show)
 
 " reload "
 nmap <leader>R <Action>(IdeaVim.ReloadVimRc.reload)
@@ -39,6 +35,7 @@ nmap [c <Action>(VcsShowPrevChangeMarker)
 nmap <leader>gt <Action>(GotoTest)
 nmap gh <Action>(ActivateHierarchyToolWindow)<Action>(CallHierarchy)
 nmap gt <Action>(ActivateHierarchyToolWindow)<Action>(TypeHierarchy)
+nmap gI <Action>(GotoImplementation)
 
 " diagnostics
 nmap ]d <Action>(GotoNextError)
@@ -52,7 +49,7 @@ nmap <leader>mo <Action>(Bookmarks)
 nmap <leader>mt <Action>(ToggleBookmarkWithMnemonic)
 "nmap <leader>me <Action>(EditBookmark)
 nmap <leader>me <Action>(EditBookmarksGroup)
-"
+
 nmap <leader>mA <Action>(GotoBookmarkA)
 nmap <leader>mB <Action>(GotoBookmarkB)
 nmap <leader>mC <Action>(GotoBookmarkC)
@@ -80,63 +77,65 @@ nmap <leader>mX <Action>(GotoBookmarkX)
 nmap <leader>mY <Action>(GotoBookmarkY)
 nmap <leader>mZ <Action>(GotoBookmarkZ)
 
-nmap ]s <Action>(GotoNextBookmark)
-nmap [s <Action>(GotoPreviousBookmark)
-nmap <C-f> <Action>(ShowBookmarks)
-
-" cargo -- enable only on rust rover
-" nmap <leader>cr <Action>(Cargo.RefreshCargoProject)
+nmap ]m <Action>(GotoNextBookmark)
+nmap [m <Action>(GotoPreviousBookmark)
+nmap <C-m> <Action>(ShowBookmarks)
 
 " git "
+nmap <leader>gl <Action>(Git.Log)
+nmap <leader>gs <Action>(Git.MainMenu.LocalChanges)
 nmap <leader>gc <Action>(ActivateCommitToolWindow)
 nmap <leader>ga <Action>(Git.FileActions)
 nmap <leader>gd <Action>(Git.CompareWithBranch)
 nmap <leader>gb <Action>(Git.Branches)
-nmap <leader>go <Action>(Git.Menu)
+nmap <leader>gm <Action>(Git.Menu)
 nmap <leader>gg <Action>(ActivateVersionControlToolWindow)
 nmap <leader>gn <Action>(Git.Clone)
 nmap <leader>gr <Action>(Vcs.RollbackChangedLines)
 
 " refactoring
 nmap <leader>rn <Action>(RenameElement)
-nmap <leader>rr <Action>(Refactorings.QuickListPopupAction)
 vmap <leader>rr <Action>(Refactorings.QuickListPopupAction)
-nmap <leader>rf <Action>(ReformatCode)<Action>(OptimizeImports)
+nmap <leader>rf <Action>(ReformatCode)
+nmap <leader>ri <Action>(OptimizeImports)
 
 " debugging
-" Debugger.ShowReferring
-"nmap <leader>dn <Action>(DebugClass)
+nmap <leader>dt <Action>(TestTreePopupMenu)
 nmap <leader>do <Action>(ActivateDebugToolWindow)
 nmap <leader>q <Action>(Stop)
 nmap <leader>dw <Action>(Debugger.AddToWatch)
 nmap <leader>j <Action>(StepOver)
 nmap <leader>i <Action>(SmartStepInto)
 nmap <leader>rc <Action>(RunToCursor)
-nmap <leader>K <Action>(QuickEvaluateExpression)
-nmap <leader>de <Action>(EvaluateExpression)
-nmap <leader>n <Action>(Debug)
+nmap <leader>de <Action>(QuickEvaluateExpression)
+vmap <leader>de <Action>(QuickEvaluateExpression)
+nmap <leader>dE <Action>(EvaluateExpression)
 nmap <leader>b <Action>(ToggleLineBreakpoint)
+nmap <leader>n <Action>(Debug)
 
-" movement
-" ...
+" IDE 
+" interesting toggle --> (Documentation.ToggleShowInPopup)
+nmap <leader>io <Action>(ActivateRunToolWindow)
+nmap <leader>it <Action>(ActivateTODOToolWindow)
+nmap <leader>ip <Action>(EditorIncreaseFontSize)
+nmap <leader>im <Action>(EditorDecreaseFontSize)
+nmap <leader>is <Action>(NewScratchFile)
 
-" search "
+" search
 nmap <leader>fF <Action>(GoToMenu)
 nmap <leader>fi <Action>(Replace)
 nmap <leader>ff <Action>(GotoFile)
 nmap <leader>fs <Action>(FileStructurePopup)
 nmap <leader>fS <Action>(GotoSymbol)
-"nmap <leader>fg <Action>(SearchEverywhere)
 nmap <leader>fg <Action>(TextSearchAction)
 nmap <leader>fe <Action>(ActivateProblemsViewToolWindow)
-" nmap <leader>fq <Action>(QuickFixes)
 nmap <leader>fp <Action>(ManageRecentProjects)
 nmap <leader>fa <Action>(ShowIntentionActions)
 nmap <leader>fo <Action>(ActivateStructureToolWindow)
 nmap <leader>a <Action>(GotoAction)
 nmap <leader><leader> <Action>(Switcher)
 
-" editing "
+" movement & editing
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 nnoremap L $
@@ -154,15 +153,18 @@ vnoremap > >gv
 vmap gc <Action>(CommentByLineComment)
 vmap gC <Action>(CommentByBlockComment)
 
-" nmap <leader>gl <Action>(Git.Log)
-nmap <leader>gs <Action>(Git.MainMenu.LocalChanges)
 " settings control "
 nmap <leader>cc <Action>(QuickChangeScheme)
 nmap <leader>zz <Action>(ToggleDistractionFreeMode)
-" IDE controls "
 
 " terminal
 " to leave without closing, S-esc
 nmap <leader>to <Action>(ActivateTerminalToolWindow)
+
+
 " only for pycharm
-nmap <leader>tr <Action>(ActivatePythonConsoleToolWindow)
+" nmap <leader>tr <Action>(ActivatePythonConsoleToolWindow)
+
+
+" only on rust rover
+nmap <leader>cr <Action>(Cargo.RefreshCargoProject)
