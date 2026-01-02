@@ -1,0 +1,8 @@
+font-family = Maple Mono NF
+
+theme = "Gruvbox Dark"
+background = "1D2021"
+
+window-decoration = true
+mouse-hide-while-typing = true
+adjust-cell-height = 8%
