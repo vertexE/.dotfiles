@@ -1,0 +1,50 @@
+[core]
+	editor = nvim
+	pager = delta
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta "synth"]
+	dark = true
+	syntax-theme = none
+
+	# file header
+	file-style                        = "#00E6A8" bold
+	file-decoration-style             = "#2F3A4A" underline
+
+	# hunk header
+	hunk-header-style                 = file line-number syntax
+	hunk-header-file-style            = "#9AA8BA"
+	hunk-header-line-number-style     = "#52627A"
+	hunk-header-decoration-style      = "#2F3A4A" box
+
+	# removed lines  (DiffDelete: red faded ~10-20% over surface)
+	minus-style                       = "#B8C0CC" "#170A0D"
+	minus-emph-style                  = "#FF5C78" "#2E1018"
+	minus-non-emph-style              = "#687384" "#170A0D"
+
+	# added lines    (DiffAdd: green faded ~10-20% over surface)
+	plus-style                        = "#B8C0CC" "#061411"
+	plus-emph-style                   = "#00D787" "#092B1E"
+	plus-non-emph-style               = "#687384" "#061411"
+
+	# context
+	zero-style                        = "#687384"
+
+	# line numbers
+	line-numbers                      = true
+	line-numbers-minus-style          = "#FF5C78" "#170A0D"
+	line-numbers-plus-style           = "#00D787" "#061411"
+	line-numbers-zero-style           = "#425064" "#090D13"
+	line-numbers-left-format          = "{nm:>4}┤"
+	line-numbers-right-format         = "{np:>4}│"
+
+	# commit
+	commit-style                      = "#B875FF" bold
+	commit-decoration-style           = "#2F3A4A" box
+
+[delta]
+	features = synth
+	navigate = false  # use n and N to move between diff sections
+	dark = true      # or light = true, or omit for auto-detection
